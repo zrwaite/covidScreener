@@ -7,7 +7,7 @@ Allows uwaterloo students to automatically complete their covid screening by for
 Issue: Sending a standard form POST request to the uwaterloo server works, but trying to do so in Node has resulted in a response from a GET request. I have confirmed that it is in fact sending a POST request, but perhaps the headers are different with the different node softwares that I am using (I started just using https, but switched to form-data because the uwaterloo website requires data not to be in json format when submitting the covid form)
 
 If anyone can fix that issue and get a https response that looks like this, then the server can be up and running immediately.:
-
+```
   <!DOCTYPE html>
   <head prefix="og: http://ogp.me/ns#">
       <meta charset="utf-8"/>
@@ -42,3 +42,5 @@ If anyone can fix that issue and get a https response that looks like this, then
   </div>
   </body>
   </html>
+```
+Thanks
