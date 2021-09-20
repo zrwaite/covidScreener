@@ -4,7 +4,8 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const cron = require('node-cron');
 const https = require('https');
-const form_data = require('form-data');
+const axios = require('axios');
+const FormData = require('form-data');
 
 const app = express();
 
@@ -38,26 +39,8 @@ const sendEmail = (subject, content) => {
     });
 }
 
-const covidOptions = {
-    hostname: 'checkin.uwaterloo.ca',
-    port: 443,
-    path: '/campuscheckin/screen.php?key=oRWoNPa7LWMW5CBzkkSJcUQZJHmuPE3R',
-    method: 'POST',
-};
-
-const covidData = {
-    q1: 'No',
-    q2: 'No',
-    q3: 'No',
-    q4: 'No',
-    q5: 'No',
-    q6: 'No',
-    q7: 'No',
-    q8: 'No',
-    what: 'Submit'
-}
-
-var form = new form_data();
+var form = new FormData();
+form.append('MIME Type', 'application/x-www-form-urlencoded');
 form.append('q1', 'No');
 form.append('q2', 'No');
 form.append('q3', 'No');
@@ -67,21 +50,28 @@ form.append('q6', 'No');
 form.append('q7', 'No');
 form.append('q8', 'No');
 form.append('what', 'Submit');
-
-var request = https.request({
-    method: 'POST',
-    host: 'checkin.uwaterloo.ca', //httpbin.org
-    path: '/campuscheckin/screen.php?key=oRWoNPa7LWMW5CBzkkSJcUQZJHmuPE3R', // /post?key=this
-    headers: form.getHeaders()
-});
-
-form.pipe(request);
-
-request.on('response', function(res) {
-    console.log(res.statusCode);
-    res.on('data', (d) => {
-        process.stdout.write(d);
-    });
+var headers = {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Origin": "https://checkin.uwaterloo.ca",
+    "Content-Length": "59",
+    "Accept-Language": "en-ca",
+    "Host": "checkin.uwaterloo.ca",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15",
+    "Referer": "https://checkin.uwaterloo.ca/campuscheckin/screen.php?key=qeAuo3Ro3zMDyUWO32af5O0TUlMEOgBw",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+};
+var key = "qeAuo3Ro3zMDyUWO32af5O0TUlMEOgBw";
+axios({
+    method: "post",
+    url: "https://checkin.uwaterloo.ca/campuscheckin/screen.php?key="+key,
+    data: form,
+    headers: {"Content-Type": "multipart/form-data"},
+}).then((res) =>{
+    console.log(res.data);
+}).catch((err) =>{
+    console.log(err);
 });
 
 const lastTime = Date.now()-900000;
