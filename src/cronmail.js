@@ -30,7 +30,11 @@ const parseData = async() => {
 const screen = async () => {
 	let keys = await parseData();
 	keys.forEach(key =>{
-		webPage(key);
+		try{
+			webPage(key);
+		} catch (e){
+			console.log("COuldn't load webpage");
+		}
 	})	
 	if (keys.length) console.log(keys)
 }
