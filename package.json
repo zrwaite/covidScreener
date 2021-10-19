@@ -2,10 +2,10 @@
   "name": "covidscreening",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +15,9 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "form-data": "^4.0.0",
-    "https": "^1.0.0",
     "node-cron": "^3.0.0",
     "nodemailer": "^6.6.3",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "puppeteer": "^10.4.0"
   }
 }
