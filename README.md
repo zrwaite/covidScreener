@@ -3,3 +3,6 @@ Allows uwaterloo students to automatically complete their covid screening by for
 
 1. npm install
 2. npm start
+
+Current Issue:
+Can't be dockerized. Puppeteer won't launch a browser window in a container environment
