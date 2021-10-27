@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  screener: 
+    env_file: ".env"
+    build: ./
+    image: "zrwaite/covidscreener"
+    ports: 
+      - "8000:8000"
+    
