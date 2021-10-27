@@ -1,7 +1,7 @@
 # Automatic Covid Screener
 *Allows uwaterloo students to automatically complete their covid screening by forwarding the email with subject containing "Welcome to Campus - Please complete COVID-19 screening" to `3fsyu.covid@inbox.testmail.app`*
 
-***By using this you agree you have said no to all of the following screening questions, but are just annoyed at clicking through it every single day***:
+### ***By using this you agree you have said no to all of the following screening questions, but are just annoyed at clicking through it every single day***:
 1. Do you have any of the following new or worsening symptoms or signs? Symptoms should not be chronic or related to other known causes or conditions.
 	* Fever and/or chills (Temperature of 37.8 degrees Celsius/100 degrees Fahrenheit or higher)
 	* Cough or barking cough (croup) (Not related to asthma, post-infectious reactive airways, COPD, or other known causes or conditions you already have)
@@ -15,6 +15,8 @@
 5. In the last 10 days, have you tested positive on a rapid antigen test or a home-based self-testing kit? If you have since tested negative on a lab-based PCR test, answer “No”
 6. In the last 14 days, have you received a COVID Alert exposure notification on your cell? If you are fully vaccinated or have already gone for a test and got a negative result, check “No”
 7. Is anyone you live with currently experiencing any new COVID-19 symptoms and/or waiting for test results after experiencing symptoms? If the individual experiencing symptoms received a COVID-19 vaccination in the last 48 hours and is experiencing mild fatigue, muscle aches, and/or joint pain that only began after vaccination, select "No". (If you are fully vaccinated or have tested positive for COVID-19 in the last 90 days and since been cleared, check “No”)
+
+Find the screening here: https://checkin.uwaterloo.ca/campuscheckin/screen.php 
 
 Simply forward the email, which can be done automatically in outlook like this:
 <img src="./images/forward.png" alt="image showing how to auto-forward emails">
