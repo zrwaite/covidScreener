@@ -1,6 +1,7 @@
 const cron = require('node-cron');
-const webPage = require('./puppeteer');
+const sendData = require('./axiosSend');
 const axios = require('axios');
+var usedKeys = [];
 const getData = async () => {
 	let lastTime = Date.now()-300000;
 	let link = `https://api.testmail.app/api/json?apikey=410b257d-9751-4366-bfec-ede0ec4dd406&namespace=3fsyu&pretty=true&tag=covid&limit=50&timestamp_from=${lastTime}`
@@ -12,8 +13,8 @@ const parseData = async() => {
 	let emails = await getData();
 	let keys = [];
 	emails.forEach(email => {
-		let subject = "Fwd: Welcome to Campus - Please complete COVID-19 screening"
-		if (email.subject === subject && email.html !== undefined) {
+		let subject = "Welcome to Campus - Please complete COVID-19 screening"
+		if (email.subject.includes(subject) && email.html !== undefined) {
 			let link = "https://checkin.uwaterloo.ca/campuscheckin/screen.php?key=";
 			let index = email.html.indexOf(link)+link.length;
 			if (index === -1) {
@@ -28,18 +29,26 @@ const parseData = async() => {
 	return keys;
 }
 const screen = async () => {
+	const usedKeysNew = [...usedKeys];
+	usedKeys = [];
 	let keys = await parseData();
 	keys.forEach(key =>{
 		try{
-			webPage(key);
+			if (usedKeysNew.indexOf(key) === -1) {
+				sendData(key);
+				usedKeysNew.push(key);
+			}
+				
 		} catch (e){
 			console.log("COuldn't load webpage");
 		}
 	})	
 	if (keys.length) console.log(keys)
+	usedKeys = [...keys]
 }
 const cronmail = async () => {
 	screen();
+	console.log("Working lets goo");
 	cron.schedule('*/5 * * * *', () =>  {
 		screen(); 
 	});
