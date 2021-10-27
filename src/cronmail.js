@@ -1,14 +1,7 @@
 const cron = require('node-cron');
-const sendData = require('./axiosSend');
-const axios = require('axios');
+const {sendData, getData} = require('./axiosRequests');
 var usedKeys = [];
-const getData = async () => {
-	let lastTime = Date.now()-300000;
-	let link = `https://api.testmail.app/api/json?apikey=410b257d-9751-4366-bfec-ede0ec4dd406&namespace=3fsyu&pretty=true&tag=covid&limit=50&timestamp_from=${lastTime}`
-	const res = await axios.get(link);
-    if (res.status == 200) return res.data.emails;
-	else console.log("error getting mail");
-}
+
 const parseData = async() => {
 	let emails = await getData();
 	let keys = [];
@@ -47,10 +40,11 @@ const screen = async () => {
 	usedKeys = [...keys]
 }
 const cronmail = async () => {
-	screen();
+	//screen();
 	console.log("Working lets goo");
 	cron.schedule('*/5 * * * *', () =>  {
 		screen(); 
+		console.log('working');
 	});
 }
 
