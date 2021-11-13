@@ -1,6 +1,8 @@
 # Automatic Covid Screener
 *Allows uwaterloo students to automatically complete their covid screening by forwarding the email with subject containing "Welcome to Campus - Please complete COVID-19 screening" to `3fsyu.covid@inbox.testmail.app`*
 
+[![wakatime](https://wakatime.com/badge/user/6c7c91d4-47e9-422d-a269-f30643615ab6/project/87ed4868-e6c7-47e6-b80e-66ac8908646e.svg)](https://wakatime.com/badge/user/6c7c91d4-47e9-422d-a269-f30643615ab6/project/87ed4868-e6c7-47e6-b80e-66ac8908646e)
+
 ### ***By using this you agree you have said no to all of the following screening questions, but are just annoyed at clicking through it every single day***:
 1. Do you have any of the following new or worsening symptoms or signs? Symptoms should not be chronic or related to other known causes or conditions.
 	* Fever and/or chills (Temperature of 37.8 degrees Celsius/100 degrees Fahrenheit or higher)
