@@ -42,10 +42,7 @@ const screen = async () => {
 const cronmail = async () => {
 	//screen();
 	console.log("Working lets goo");
-	cron.schedule('* 8-22 * * *', () =>  {
-		screen(); 
-	});
-	cron.schedule('*/5 23,0-7 * * *', () =>  {
+	cron.schedule('* * * * *', () =>  {
 		screen(); 
 	});
 	
